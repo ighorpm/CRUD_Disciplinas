@@ -1,3 +1,4 @@
+
 //MUDE AQUI E COLOQUE O PACOTE DE ACORDO COM O SEU PROJETO
 //DICA: OLHE O PACKAGE QUE OUTRA CLASSE DO SEU PROJETO EST� E COLOQUE O MESMO!
 package Disciplina;
@@ -8,7 +9,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
-
+// OBJETIVO: Configuração do meu banco é em outra maquina
 public class ConexaoMySQL {
 
     private static ConexaoMySQL instance = null;

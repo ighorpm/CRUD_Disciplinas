@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Disciplina;
 
 import java.sql.Connection;
@@ -11,6 +7,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,11 +18,13 @@ public class RemoverDisciplina extends javax.swing.JFrame {
     /**
      * Creates new form RemoverDisciplina
      */
+    // OBJETIVO: Método Construtor responsável por carregar o ComboBox e demais itens
     public RemoverDisciplina() {
         initComponents();
         loadCombo();
         
     }
+    // OBJETIVO: método que preenche os itens do combobox
     private void loadCombo(){
         Connection con = ConexaoMySQL.getInstance().getConnection();
         String cmd = "select nome from disciplina;";
@@ -110,19 +109,21 @@ public class RemoverDisciplina extends javax.swing.JFrame {
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
-
+    // OBJETIVO: Função responsável por deletar o item selecionado no combobox através do Nome
     private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
         String cmd = "delete from disciplina where nome = '"+jComboBoxDisciplinaNome.getSelectedItem()+"';";
         Connection con = ConexaoMySQL.getInstance().getConnection();
         try {
             con.createStatement().executeUpdate(cmd);
+            JOptionPane.showMessageDialog(null, "Formulário deletado!");
+            dispose();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_jButtonRemoverActionPerformed
 
     private void jComboBoxDisciplinaNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDisciplinaNomeActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jComboBoxDisciplinaNomeActionPerformed
 
     /**
